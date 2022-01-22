@@ -1,0 +1,92 @@
+[
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Zobacz najlepszy taniec!",
+            "category": "Taniec",
+            "path": "media/videos/dance.mp4",
+            "miniature": "media/videos/dance_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Mój nowy taniec",
+            "category": "Taniec",
+            "path": "media/videos/dance2.mp4",
+            "miniature": "media/videos/dance2_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Słonik robi tup tup",
+            "category": "Zwierzęta",
+            "path": "media/videos/elephant.mp4",
+            "miniature": "media/videos/elephant_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Pole golfowe z lotu ptaka",
+            "category": "Sport",
+            "path": "media/videos/golf.mp4",
+            "miniature": "media/videos/golf_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Drzewo ze smakołykiem",
+            "category": "Rośliny",
+            "path": "media/videos/grapes.mp4",
+            "miniature": "media/videos/grapes_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Słodziutki homiś",
+            "category": "Zwierzęta",
+            "path": "media/videos/hamster.mp4",
+            "miniature": "media/videos/hamster_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Konie",
+            "category": "Zwierzęta",
+            "path": "media/videos/horse.mp4",
+            "miniature": "media/videos/horse_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Nowy rok!",
+            "category": "Inne",
+            "path": "media/videos/new_year.mp4",
+            "miniature": "media/videos/new_year_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Dziewczyny na deskach",
+            "category": "Ludzie",
+            "path": "media/videos/skateboard.mp4",
+            "miniature": "media/videos/skateboard_miniature.png"
+        }
+    },
+    {
+        "model": "video.video",
+        "fields": {
+            "name": "Czas na herbatę",
+            "category": "Inne",
+            "path": "media/videos/tea.mp4",
+            "miniature": "media/videos/tea_miniature.png"
+        }
+    }
+]

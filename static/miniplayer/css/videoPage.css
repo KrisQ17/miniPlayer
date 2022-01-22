@@ -1,0 +1,26 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.v-toolbar--prominent .v-toolbar__content {
+    align-items: center !important;
+}
+
+.video {
+    cursor: pointer;
+}
+
+.title {
+    margin-left: 40px;
+}
+
+.rating {
+    margin-left: 50px;
+}
+.addcomment {
+    text-align: right;
+}
+
+.comments {
+    margin-top: 15px;
+}

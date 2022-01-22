@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>miniPlayer</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'miniplayer/css/videoPage.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block css %}
+        {% endblock css %}
+    </head>
+    <body>
+        {% csrf_token %}
+        <div class="base">
+            <v-app id="inspire">
+              <v-card class="overflow-hidden">
+                <v-app-bar
+                  absolute
+                  color="#fcb69f"
+                  dark
+                  shrink-on-scroll
+                  src="https://i.picsum.photos/id/830/1920/1080.jpg?hmac=Li8K4Tftc7YfDuFIapXbthcCOllJ7AGBAFkHqFy8GRU"
+                  scroll-target="#scrolling-techniques-2"
+                >
+                  <template v-slot:img="{ props }">
+                    <v-img
+                      v-bind="props"
+                      gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+                    ></v-img>
+                  </template>
+            
+                  <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                  
+                  <v-app-bar-title style="cursor: pointer;">
+                    <div @click="home">miniPlayer</div>
+                  </v-app-bar-title>
+
+                  <v-spacer></v-spacer>
+
+                  <v-chip
+                    class="ma-2"
+                    color="primary"
+                    label
+                    >
+                    <v-icon left>
+                        mdi-account-circle-outline
+                    </v-icon>
+                    {{ user.name }}
+                    </v-chip>
+            
+                  <v-btn icon @click="logout">
+                    <v-icon color="white">mdi-logout</v-icon>
+                  </v-btn>
+
+                </v-app-bar>
+
+
+                <v-sheet
+                  id="scrolling-techniques-2"
+                  class="overflow-y-auto"
+                  max-height="100vh"
+                >
+                    <v-container fluid style="min-height: 100vh; padding-top: 20vh;">
+
+                        <v-row>
+                            <v-col cols="8">
+                                <div class="title">
+                                    [[ video.name ]]
+                                </div>
+                                <div class="video" v-if="video != null">
+                                    <video height="600px" width="100%" controls autoplay>
+                                        <source :src='video.path' type="video/mp4">
+                                      Your browser does not support the video tag.
+                                      </video>
+                                </div>
+                                <div class="rating">
+                                    <v-rating
+                                    v-model="rating"
+                                    color="primary"
+                                    background-color="grey darken-1"
+                                    empty-icon="$ratingFull"
+                                    hover
+                                    large
+                                    ></v-rating>
+                                </div>
+                            </v-col>
+                            <v-col cols="4">
+                                <div class="title">
+                                    Komentarze
+                                </div>
+                                <div class="addcomment">
+                                <v-textarea
+                                v-model="comment"
+                                class="mx-2"
+                                label="Dodaj komentarz"
+                                rows="1"
+                                prepend-icon="mdi-comment"
+                                ></v-textarea>
+                                <v-btn
+                                    class="mx-2"
+                                    color="primary"
+                                    dark
+                                    @click="addComment"
+                                >
+                                    Skomentuj
+                                    <v-icon
+                                    dark
+                                    right
+                                    >
+                                    mdi-checkbox-marked-circle
+                                    </v-icon>
+                                </v-btn>
+                                </div>
+
+                                <div class="comments">
+                                    <template v-if="comments.length == 0">
+                                        <div style="text-align: center">Brak komentarzy, bądź pierwszy!</div>
+                                    </template>
+                                    <template v-else>
+                                        <div class="item">
+                                            <v-list>
+                                                <template v-for="item in comments">
+                                                    <v-list-item>
+                                                        <v-list-item-avatar>
+                                                          <v-img src="https://cdn.vuetifyjs.com/images/lists/1.jpg"></v-img>
+                                                        </v-list-item-avatar>
+                                              
+                                                        <v-list-item-content>
+                                                          <v-list-item-title>[[ correctDate(item.date) ]] | <strong>[[ item.user.name ]]</strong></v-list-item-title>
+                                                          <v-list-item-subtitle>[[ item.text ]]</v-list-item-subtitle>
+                                                        </v-list-item-content>
+                                                      </v-list-item>
+                                                  
+                                                </template>
+                                              </v-list>
+                                        </div>
+                                    </template>
+                                </div>
+                            </v-col>
+                        </v-row>
+
+                    </v-container>
+                </v-sheet>
+              </v-card>
+            </v-app>
+          </div>
+
+    {% block js %}
+    {% endblock js %}
+    <script src="{% static 'libs/dayjs/dayjs.min.js' %}"></script>
+    <script src="{% static 'libs/dayjs/plugin/customParseFormat.js' %}"></script>
+    <script>
+      dayjs().format()
+    </script>
+    <script src="{% static 'libs/jquery/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="{% static 'miniplayer/js/videoPage.js' %}"></script>
+    </body>
+</html>

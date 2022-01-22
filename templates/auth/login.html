@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>miniplayer login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'auth/css/login.css' %}">
+    </head>
+    <body>
+        <div id="app">
+            <v-app id="inspire">
+                <div class="band">
+                    <div class="title text-h2">miniPlayer</div>
+                    <v-row>
+                        <v-col cols="5" class="left-side">
+                            <form method='POST' action='login'>
+                                {% csrf_token %}
+                            <div class="form">
+                                <div class="form-title text-h6">
+                                    LOGOWANIE
+                                </div>
+                                {% if error %}
+                                <div class="info2" style="color: red; text-align: center;">
+                                    {{ error }}
+                                </div>
+                                {% else %}
+                                <div class="info2">
+                                </div>
+                                {% endif %}
+                                <v-text-field
+                                    prepend-inner-icon="mdi-account-circle-outline"
+                                    label="Login"
+                                    dark
+                                    outlined
+                                    name="username"
+                                    loader-height="4"
+                                ></v-text-field>
+                                <v-text-field
+                                    prepend-inner-icon="mdi-form-textbox-password"
+                                    label="Hasło"
+                                    name="password"
+                                    dark
+                                    outlined
+                                    type="password"
+                                ></v-text-field>
+                                <div style="text-align-last: right;">
+                                <v-btn
+                                    class="ma-2"
+                                    outlined
+                                    color="#FFF"
+                                    right
+                                    type="submit"
+                                    >
+                                    Zaloguj się
+                                    <v-icon
+                                    dark
+                                    right
+                                    >
+                                    mdi-arrow-right-box
+                                    </v-icon>
+                                </v-btn>
+                                </div>
+                            </div>
+                        </form>
+                        </v-col>
+                        <v-col cols="7" class="right-side">
+                            <div class="information text-h4">
+                                Dołącz do nas i oglądaj najlepsze wideo w internecie!
+                            </div>
+                            <ul style="list-style-type:none; color: white;" class="pa-10">
+                                <li class="py-2"><v-icon color="green" class="pr-5 pb-1">mdi-check-all</v-icon>Najpopularniejsze wideo w internecie</li>
+                                <li class="py-2"><v-icon color="green" class="pr-5 pb-1">mdi-check-all</v-icon>Nieograniczony dostęp</li>
+                                <li class="py-2"><v-icon color="green" class="pr-5 pb-1">mdi-check-all</v-icon>Najwyższa jakość</li>
+                                <li class="py-2"><v-icon color="green" class="pr-5 pb-1">mdi-check-all</v-icon>3 zadowolonych użytkowników</li>
+                                <li class="py-2"><v-icon color="green" class="pr-5 pb-1">mdi-check-all</v-icon>Chyba wszystko działa</li>
+                            </ul>
+                        </v-col>
+                    </v-row>
+                </div>
+            </v-app>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+        <script src="{% static 'auth/js/login.js' %}"></script>
+    </body>
+</html>

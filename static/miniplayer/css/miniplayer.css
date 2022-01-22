@@ -1,0 +1,11 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.v-toolbar--prominent .v-toolbar__content {
+    align-items: center !important;
+}
+
+.video {
+    cursor: pointer;
+}

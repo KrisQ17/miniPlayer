@@ -1,0 +1,47 @@
+[
+    {
+        "model": "video.user",
+        "fields": {
+            "login": "zawadd_04523",
+            "password": "2c617298f1fea48986b35e9e3eec7dc6",
+            "name": "Domino198",
+            "mail": "DominikZawadzki@teleworm.us"
+        }
+    },
+    {
+        "model": "video.user",
+        "fields": {
+            "login": "czarnf_12222",
+            "password": "2c617298f1fea48986b35e9e3eec7dc6",
+            "name": "Czarna122",
+            "mail": "FelicjaCzarnecka@dayrep.com"
+        }
+    },
+    {
+        "model": "video.user",
+        "fields": {
+            "login": "piotrs123",
+            "password": "2c617298f1fea48986b35e9e3eec7dc6",
+            "name": "PiotroWskiPP",
+            "mail": "StanislawPiotrowski@rhyta.com"
+        }
+    },
+    {
+        "model": "video.user",
+        "fields": {
+            "login": "walczak",
+            "password": "2c617298f1fea48986b35e9e3eec7dc6",
+            "name": "Walkar",
+            "mail": "JagodaWalczak@teleworm.us"
+        }
+    },
+    {
+        "model": "video.user",
+        "fields": {
+            "login": "dudaka123",
+            "password": "2c617298f1fea48986b35e9e3eec7dc6",
+            "name": "Duddd1337",
+            "mail": "KorneliaDuda@armyspy.com"
+        }
+    }
+]

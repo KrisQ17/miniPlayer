@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>miniPlayer</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'miniplayer/css/miniplayer.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block css %}
+        {% endblock css %}
+    </head>
+    <body>
+        {% csrf_token %}
+        <div class="base">
+            <v-app id="inspire">
+              <v-card class="overflow-hidden">
+                <v-app-bar
+                  absolute
+                  color="#fcb69f"
+                  dark
+                  shrink-on-scroll
+                  src="https://i.picsum.photos/id/830/1920/1080.jpg?hmac=Li8K4Tftc7YfDuFIapXbthcCOllJ7AGBAFkHqFy8GRU"
+                  scroll-target="#scrolling-techniques-2"
+                >
+                  <template v-slot:img="{ props }">
+                    <v-img
+                      v-bind="props"
+                      gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+                    ></v-img>
+                  </template>
+            
+                  <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                  
+                  <v-app-bar-title style="cursor: pointer;">
+                    <div @click="home">miniPlayer</div>
+                  </v-app-bar-title>
+
+                  <v-spacer></v-spacer>
+
+                  <v-chip
+                    class="ma-2"
+                    color="primary"
+                    label
+                    >
+                    <v-icon left>
+                        mdi-account-circle-outline
+                    </v-icon>
+                    {{ user.name }}
+                    </v-chip>
+            
+                  <v-btn icon @click="logout">
+                    <v-icon color="white">mdi-logout</v-icon>
+                  </v-btn>
+
+                  <template v-slot:extension>
+                    <v-tabs align-with-title>
+                      <v-tab @click="changeCategory('all')">Wszystkie</v-tab>
+                      <v-tab @click="changeCategory('people')">Ludzie</v-tab>
+                      <v-tab @click="changeCategory('sport')">Sport</v-tab>
+                      <v-tab @click="changeCategory('dance')">Taniec</v-tab>
+                      <v-tab @click="changeCategory('animals')">Zwierzęta</v-tab>
+                      <v-tab @click="changeCategory('others')">Inne</v-tab>
+                    </v-tabs>
+                  </template>
+
+                </v-app-bar>
+
+
+                <v-sheet
+                  id="scrolling-techniques-2"
+                  class="overflow-y-auto"
+                  max-height="100vh"
+                >
+                    <v-container fluid style="min-height: 100vh; padding-top: 30vh;">
+
+                      <v-row dense>
+
+                        <template v-for="video in videos">
+                          <v-col cols="3">
+                            <v-card class="mx-auto my-4" max-width="344">
+                              <v-img :src="video.miniature" height="200px" class="video" @click="openVideo(video)"></v-img>
+                              <v-card-title>
+                                [[ video.name ]]
+                              </v-card-title>
+                              <v-card-text>
+                                <v-row
+                                  align="center"
+                                  class="mx-0"
+                                >
+                                  <v-rating
+                                    :value='video.rating'
+                                    color="amber"
+                                    dense
+                                    half-increments
+                                    readonly
+                                    size="14"
+                                  ></v-rating>
+                          
+                                  <div class="grey--text ms-4">
+                                    [[ video.rating ]] ([[ video.rating_count ]])
+                                  </div>
+                                </v-row>
+                              </v-card-text>
+                            </v-card>
+                          </v-col>
+                        </template>
+                    </v-col>
+                    </v-row>
+                        
+                  </v-container>
+                  <v-footer inset width="auto" class="py-2" color="primary lighten-1">
+                    <v-container>
+                        <v-row
+                            justify="center"
+                            no-gutters
+                            >
+                            <v-btn
+                                v-for="link in links"
+                                :key="link"
+                                color="white"
+                                text
+                                rounded
+                                class="my-2"
+                            >
+                                [[ link ]]
+                            </v-btn>
+                            <v-col
+                                class="primary lighten-2 py-4 text-center white--text"
+                                cols="12"
+                            >
+                                [[ new Date().getFullYear() ]] — <strong>miniPlayer</strong>
+                            </v-col>
+                            </v-row>
+                    </v-container>
+                </v-footer>
+                </v-sheet>
+              </v-card>
+            </v-app>
+          </div>
+
+    {% block js %}
+    {% endblock js %}
+    <script src="{% static 'libs/jquery/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="{% static 'miniplayer/js/miniplayer.js' %}"></script>
+    </body>
+</html>
